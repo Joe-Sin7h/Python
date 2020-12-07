@@ -1,6 +1,8 @@
 # Python program for Bitonic Sort. Note that this program
 # works only when size of input is a power of 2.
-
+""" Bitonic Sort can be better understood at :
+https://en.wikipedia.org/wiki/Bitonic_sorter 
+"""
 
 # The parameter dir indicates the sorting direction, ASCENDING
 # or DESCENDING; if (a[i] > a[j]) agrees with the direction,
@@ -9,12 +11,14 @@ def compAndSwap(a, i, j, dire):
     if (dire == 1 and a[i] > a[j]) or (dire == 0 and a[i] < a[j]):
         a[i], a[j] = a[j], a[i]
 
-        # It recursively sorts a bitonic sequence in ascending order,
+        """It recursively sorts a bitonic sequence in ascending order,"""
 
 
-# if dir = 1, and in descending order otherwise (means dir=0).
-# The sequence to be sorted starts at index position low,
-# the parameter cnt is the number of elements to be sorted.
+"""
+if dir = 1, and in descending order otherwise (means dir=0).
+The sequence to be sorted starts at index position low,
+the parameter cnt is the number of elements to be sorted.
+"""
 def bitonic_merge(a, low, cnt, dire):
     if cnt > 1: 
         k = int(cnt / 2)
@@ -23,7 +27,7 @@ def bitonic_merge(a, low, cnt, dire):
         bitonic_merge(a, low, k, dire)
         bitonic_merge(a, low + k, k, dire)
 
-        # This function first produces a bitonic sequence by recursively
+        """ This function first produces a bitonic sequence by recursively"""
 
 
 # sorting its two halves in opposite sorting orders, and then
@@ -35,17 +39,22 @@ def bitonic_sort(a, low, cnt, dire):
         bitonic_sort(a, low + k, k, 0)
         bitonic_merge(a, low, cnt, dire)
 
-        # Caller of bitonic_sort for sorting the entire array of length N
+        """Caller of bitonic_sort for sorting the entire array of length N"""
 
 
 # in ASCENDING order
 def sort(a, N, up):
     bitonic_sort(a, 0, N, up)
+    """Calling Bitonic sort function
+    Examples:
+    >>> bitonic_sort([0, 5, 2, 3, 2])
+    [0, 2, 2, 3, 5]
+    """
 
 
 if __name__ == "__main__":
-
-
+    
+    import doctest
     user_input = input("Enter numbers separated by a comma:\n").strip()
     unsorted = [int(item) for item in user_input.split(",")]
 
